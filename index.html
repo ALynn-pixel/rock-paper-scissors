@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    
+<head><title>Rock Paper Scissors</title></head>
+
+<script>
+
+//computerPlay function that returns rock paper or scissors at random
+//function that takes two parameters, playerSelection and computerSelection
+// and plays one round of rock paper scissors. returns a string that declares
+//the winner of the round "You Lose! Paper beats rock"
+//function needs to be case insensitive, any input is changed to lower case
+// write a function called game, place this function around the origincal fuction
+//this function plays 5 games and keeps score and reports a winner or loser at the end
+//use prompt to get user input
+
+//get user input of rock paper scissors
+//store input in variable
+//computer plays rock paper or scissors randomly
+//store in variable
+//check both variables against one another to see who wins
+//display message of who won
+
+let options = ['rock', 'paper', 'scissors'];
+  let playerCounter = 0;
+   let compCounter = 0;
+   let tie = 0;
+
+function computerPlay() {
+   let computerChoice = Math.floor(Math.random() * options.length);
+   return options[computerChoice];
+}
+
+function game() {
+
+    function playRound(playerSelection, computerSelection){
+
+   playerSelection = prompt('Please enter rock, paper, or scissors to play!').toLowerCase();
+   computerSelection = computerPlay();
+
+   if (playerSelection == computerSelection) {
+       result = 'Computer chose ' + computerSelection + ', its a tie';
+       tie++;
+   }
+  else if (playerSelection == 'scissors' && computerSelection == 'paper') {
+      playerCounter++;
+     result = 'Computer chose ' + computerSelection + ', you have won!';
+   }
+    else if (playerSelection == 'paper' && computerSelection == 'scissors') {
+    compCounter++;
+     result = 'Computer chose ' + computerSelection + ', computer has won!';
+   }
+    else if (playerSelection == 'rock' && computerSelection == 'paper') {
+        compCounter++;
+     result = 'Computer chose ' + computerSelection + ', computer has won!';
+   }
+    else if (playerSelection == 'paper' && computerSelection == 'rock') {
+        playerCounter++;
+     result = 'Computer chose ' + computerSelection + ', you have won!';
+   }
+    else if (playerSelection == 'scissors' && computerSelection == 'rock') {
+        compCounter++;
+     result = 'Computer chose ' + computerSelection + ', computer has won!';
+   }
+    else if (playerSelection == 'rock' && computerSelection == 'scissors') {
+        playerCounter++;
+     result = 'Computer chose ' + computerSelection + ', you have won!';
+   }
+//    console.log(playerCounter);
+//    console.log(compCounter);
+//    console.log(tie);
+   return result;
+    }
+
+    console.log(playRound());
+    console.log(playRound());
+    console.log(playRound());
+    console.log(playRound());
+    console.log(playRound());
+    // console.log('You won ' + playerCounter +' games');
+    // console.log('The computer won ' + compCounter +' games');
+    // console.log('You tied for ' + tie+' games');
+
+    if (playerCounter > compCounter) {
+        console.log('You win this round!')
+    }
+    else if (compCounter > playerCounter) {
+        console.log('The computer wins this round!')
+    }
+}
+    </script>
+
+
+
+</html>
