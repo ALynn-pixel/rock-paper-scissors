@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+    
+<head><title>Rock Paper Scissors</title></head>
+<body>
+<h1>Rock, Paper, Scissors</h1>
+<p>Select your play</p>
+    <div id="buttons">
+        <button id="rock">Rock</button>
+        <button id="paper">Paper</button>
+        <button id="scissors">Scissors</button>
+        <button id="reset">Reset</button>
+    </div>
+<div id="container"></div>
+
+<script>
+
+const rock_btn = document.getElementById('rock');
+const paper_btn = document.getElementById('paper');
+const scissors_btn = document.getElementById('scissors');
+const reset_btn = document.getElementById('reset');
+
+reset_btn.addEventListener('click', function() {
+        resetGame();
+})
+
+rock_btn.addEventListener('click',function(){
+	playRound('rock');
+	})
+
+paper_btn.addEventListener('click',function(){
+	playRound('paper');
+	})
+
+scissors_btn.addEventListener('click',function(){
+	playRound('scissors');
+	})
+
+   let options = ['rock', 'paper', 'scissors'];
+   let playerCounter = 0;
+   let compCounter = 0;
+   let tie = 0;
+
+function computerPlay() {
+   let computerChoice = Math.floor(Math.random() * options.length);
+   return options[computerChoice];
+}
+
+function playRound(playerSelection){
+
+   let computerSelection = computerPlay();
+
+   if (playerSelection == computerSelection) {
+       result.textContent = 'Computer chose ' + computerSelection + ', its a tie!';
+       tie++;
+     roundInfo.textContent = ' Ties: '  + tie + ' | Computer Wins: ' + compCounter + ' | Your Wins: ' + playerCounter; 
+   }
+  else if (playerSelection == 'scissors' && computerSelection == 'paper') {
+      playerCounter++;
+     result.textContent = 'Computer chose ' + computerSelection + ', you have won!';
+     roundInfo.textContent = ' Ties: '  + tie + ' | Computer Wins: ' + compCounter + ' | Your Wins: ' + playerCounter; 
+   }
+    else if (playerSelection == 'paper' && computerSelection == 'scissors') {
+    compCounter++;
+     result.textContent = 'Computer chose ' + computerSelection + ', computer has won!';
+     roundInfo.textContent = ' Ties: '  + tie + ' | Computer Wins: ' + compCounter + ' | Your Wins: ' + playerCounter; 
+   }
+    else if (playerSelection == 'rock' && computerSelection == 'paper') {
+        compCounter++;
+     result.textContent = 'Computer chose ' + computerSelection + ', computer has won!';
+     roundInfo.textContent = ' Ties: '  + tie + ' | Computer Wins: ' + compCounter + ' | Your Wins: ' + playerCounter; 
+   }
+    else if (playerSelection == 'paper' && computerSelection == 'rock') {
+        playerCounter++;
+     result.textContent = 'Computer chose ' + computerSelection + ', you have won!';
+     roundInfo.textContent = ' Ties: '  + tie + ' | Computer Wins: ' + compCounter + ' | Your Wins: ' + playerCounter; 
+   }
+    else if (playerSelection == 'scissors' && computerSelection == 'rock') {
+        compCounter++;
+     result.textContent = 'Computer chose ' + computerSelection + ', computer has won!';
+     roundInfo.textContent = ' Ties: '  + tie + ' | Computer Wins: ' + compCounter + ' | Your Wins: ' + playerCounter; 
+   }
+    else if (playerSelection == 'rock' && computerSelection == 'scissors') {
+        playerCounter++;
+     result.textContent = 'Computer chose ' + computerSelection + ', you have won!';
+     roundInfo.textContent = ' Ties: '  + tie + ' | Computer Wins: ' + compCounter + ' | Your Wins: ' + playerCounter; 
+   }
+}
+
+function resetGame() {
+    window.location.reload();
+}
+
+    const container = document.querySelector('#container');
+
+    const gameInfo = document.createElement('div');
+    gameInfo.classList.add('gameInfo');
+    gameInfo.setAttribute('style', 'margin-top: 5px;border: 1px solid black;width: 300px; height: 100px;')
+    container.appendChild(gameInfo);
+
+    const result = document.createElement('p');
+    result.classList.add('p');
+    gameInfo.appendChild(result);
+
+    const roundInfo = document.createElement('p');
+    roundInfo.classList.add('roundInfo');
+    gameInfo.appendChild(roundInfo);
+
+
+    </script>
+
+</body>
+
+</html>
